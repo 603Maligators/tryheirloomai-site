@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heirloom Demo</title>
+  <meta name="description" content="Heirloom interactive preview — ask a question and see a sample response." />
+  <style>
+    :root { --radius: 16px; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; background:#fff; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
+    a { color: inherit; }
+    .crumbs { font-size: 14px; color:#666; margin-bottom: 18px; }
+    h1 { font-size: 36px; margin: 0 0 8px; }
+    p.lead { color:#444; margin:0 0 20px; }
+    .card { border:1px solid #eee; border-radius: var(--radius); padding: 20px; }
+    .row { display:flex; gap:10px; align-items:center; }
+    textarea { width:100%; min-height: 90px; padding:12px 14px; font-size:16px; border:1px solid #ddd; border-radius: 10px; }
+    button { padding: 12px 16px; font-size: 16px; border:0; border-radius:10px; background:#111; color:#fff; cursor:pointer; }
+    button[disabled] { opacity:.5; cursor:not-allowed; }
+    .out { border:1px solid #eee; border-radius: var(--radius); padding:16px; min-height: 140px; background:#fafafa; white-space: pre-wrap; line-height:1.4; }
+    .muted { color:#666; font-size:14px; }
+    .spinner { display:inline-block; width:16px; height:16px; border:2px solid #999; border-top-color: transparent; border-radius:50%; animation: spin 1s linear infinite; vertical-align: middle; margin-left:8px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .examples { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .chip { border:1px solid #ddd; border-radius:999px; padding:6px 10px; font-size:14px; cursor:pointer; }
+    footer { margin-top:28px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="crumbs"><a href="/">← Back</a></div>
+    <h1>Heirloom — Interactive Preview</h1>
+    <p class="lead">Ask a sample question. This demo simulates how Heirloom will recall moments and generate narrative from your family’s data.</p>
+
+    <div class="card" style="margin:16px 0;">
+      <div class="row">
+        <textarea id="q" placeholder="e.g., Summarize our 2020 summer road trip with highlights."></textarea>
+      </div>
+      <div class="examples">
+        <span class="chip" data-q="Summarize our 2020 summer road trip with highlights.">Road trip summary</span>
+        <span class="chip" data-q="What were Koko’s best moments this year?">Koko’s moments</span>
+        <span class="chip" data-q="Build a 3-paragraph story about the day Buck came home.">Buck’s adoption story</span>
+        <span class="chip" data-q="Create a timeline of our biggest family milestones since 2015.">Family milestones</span>
+      </div>
+      <div class="row" style="margin-top:10px; justify-content:space-between;">
+        <span class="muted">Demo only — sample output.</span>
+        <button id="go">Generate Preview</button>
+      </div>
+    </div>
+
+    <div class="out" id="out">Your preview will appear here.</div>
+
+    <footer class="muted">© <span id="y"></span> Heirloom — Demo</footer>
+  </div>
+
+  <script>
+    const y = document.getElementById('y'); y.textContent = new Date().getFullYear();
+    const q = document.getElementById('q');
+    const out = document.getElementById('out');
+    const go = document.getElementById('go');
+
+    const samples = {
+      "road": `**Summer 2020 — Road Trip Highlights**
+- Day 1: Portland lighthouse at sunrise; your photo roll shows 47 shots between 5:45–6:30 AM.
+- Day 3: Koko met the ocean (again); voice memo tagged “she finally chased waves.”
+- Day 5: Campfire story night; 12-minute video with grandma recounting 1968 cross-country trip.
+
+**Summary:** A five-day loop with coastal stops, dog-friendly trails, and nightly journals. The most-liked image (family selfie in Acadia) anchors the narrative.`,
+      "koko": `**Koko’s Best Moments (This Year)**
+1) “First snow sprint” — slow-mo clip flagged in January; 1,842 views in shared album.
+2) Vet visit gold star — clean bill of health; notes mention “still thinks she’s a puppy.”
+3) Porch naps with Buck — 17 photos auto-clustered Sundays at 3–5 PM.
+
+**Memory prompt:** “Write a haiku about Koko’s porch naps.”`,
+      "buck": `**The Day Buck Came Home**
+It starts with a nervous tail and a too-big collar. The first photo shows him in the passenger seat, ears like satellite dishes. That afternoon, someone recorded a 22-second clip where he refuses to leave your lap. The evening ends with a chewed shoelace and a new routine: two bowls, one heart.
+
+**Why it matters:** Firsts shape the storyboard; Heirloom links these to future milestones.`,
+      "milestones": `**Family Milestones Since 2015**
+• 2016 — New house keys; photo album “fresh paint & pizza.”
+• 2018 — Koko’s agility ribbon; short video stitched from burst shots.
+• 2021 — Buck’s first hike; GPS route + tagged photos.
+• 2023 — “Kitchen chaos” renovation; 4K time-lapse week.
+
+**Next:** Heirloom can generate a printed timeline poster from these anchors.`
+    };
+
+    const pickSample = (txt) => {
+      txt = (txt || "").toLowerCase();
+      if (txt.includes("road") || txt.includes("trip")) return samples.road;
+      if (txt.includes("koko")) return samples.koko;
+      if (txt.includes("buck")) return samples.buck;
+      if (txt.includes("milestone") || txt.includes("timeline")) return samples.milestones;
+      // Default narrative
+      return `**Heirloom Preview**
+I’ll scan your journals, photos, voice notes, and events to assemble a clean summary with citations back to the original memories. This interactive preview demonstrates the tone and structure of responses you can expect.
+
+_Tip:_ Ask for a “timeline,” a “story,” or a “summary,” and reference names (e.g., Koko, Buck) for richer results.`;
+    };
+
+    function renderMarkdown(md) {
+      // Minimal markdown: bold **text** and line breaks
+      return md
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br/>');
+    }
+
+    function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+    async function simulate() {
+      const text = q.value.trim();
+      if (!text) { q.focus(); return; }
+      go.disabled = true;
+      const original = go.textContent;
+      go.textContent = 'Generating';
+      go.insertAdjacentHTML('beforeend', '<span class="spinner"></span>');
+
+      // fake thinking
+      await sleep(700);
+      let answer = pickSample(text);
+
+      // fake token stream
+      out.innerHTML = '';
+      const tokens = answer.split(' ');
+      for (let i = 0; i < tokens.length; i++) {
+        out.innerHTML += tokens[i] + ' ';
+        await sleep(12 + Math.random() * 18);
+      }
+      out.innerHTML = renderMarkdown(out.textContent);
+
+      go.disabled = false;
+      go.textContent = original;
+    }
+
+    go.addEventListener('click', simulate);
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => { q.value = chip.dataset.q; });
+    });
+  </script>
+</body>
+</html>
