@@ -3,77 +3,150 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heirloom — Your family’s memory OS</title>
-  <meta name="description" content="Capture, recall, and narrate your family’s life story with AI." />
+  <title>Heirloom — Preserve Every Memory. Share Every Story.</title>
+  <meta name="description" content="Heirloom is your private, AI-powered life archive — capture moments, organize memories, and turn a lifetime into a story worth passing on." />
+
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="alternate icon" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/favicon.svg" />
-<link rel="canonical" href="https://www.tryheirloomai.com/" />
+  <link rel="canonical" href="https://www.tryheirloomai.com/" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="Heirloom — Preserve everything. Remember anything." />
-<meta property="og:description" content="An AI-powered memory OS for families—journal, ingest your past, instant recall, and multi-chapter life stories with citations." />
-<meta property="og:url" content="https://www.tryheirloomai.com/" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://www.tryheirloomai.com/og-image.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Heirloom — Preserve Every Memory. Share Every Story." />
+  <meta property="og:description" content="A private, AI-powered life archive for capturing, organizing, and sharing your family’s story." />
+  <meta property="og:url" content="https://www.tryheirloomai.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.tryheirloomai.com/og-image.png" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Heirloom — Preserve everything. Remember anything." />
-<meta name="twitter:description" content="An AI-powered memory OS for families—journal, ingest your past, instant recall, and life stories." />
-<meta name="twitter:image" content="https://www.tryheirloomai.com/og-image.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heirloom — Preserve Every Memory. Share Every Story." />
+  <meta name="twitter:description" content="A private, AI-powered life archive for capturing, organizing, and sharing your family’s story." />
+  <meta name="twitter:image" content="https://www.tryheirloomai.com/og-image.png" />
 
-  <style>
-    :root { --radius: 16px; }
-    * { box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; background:#fff; }
-    .wrap { max-width: 880px; margin: 0 auto; padding: 56px 20px; }
-    .logo { font-weight: 800; letter-spacing: .6px; margin-bottom: 24px; font-size:14px; color:#444; }
-    h1 { font-size: 42px; line-height: 1.1; margin: 0 0 12px; }
-    p.lead { font-size: 20px; color: #444; margin: 0 0 28px; }
-    .card { border: 1px solid #eee; border-radius: var(--radius); padding: 24px; }
-    .muted { color: #666; font-size: 14px; }
-    .cta { margin-top: 18px; display:flex; gap:10px; flex-wrap:wrap; }
-    input[type="email"] { padding: 12px 14px; font-size: 16px; width: 320px; max-width: 100%; border:1px solid #ddd; border-radius: 10px; }
-    button { padding: 12px 16px; font-size: 16px; border: 0; border-radius: 10px; cursor: pointer; background:#111; color:#fff; }
-    .hero { margin-bottom: 16px; }
-    .features { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px; margin: 24px 0 8px; }
-    .pill { display:inline-block; background:#111; color:#fff; font-size:12px; padding:6px 10px; border-radius:999px; letter-spacing:.3px; }
-    footer { margin-top: 28px; }
-    @media (max-width: 480px) { h1 { font-size: 34px; } }
-  </style>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="tryheirloomai.com" src="https://plausible.io/js/script.js"></script>
 </head>
-<body>
-  <div class="wrap">
-    <div class="logo">HEIRLOOM</div>
+<body class="bg-slate-50 text-slate-900">
+  <header class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/favicon.svg" alt="" class="h-8 w-8" />
+      <span class="font-extrabold tracking-wide">Heirloom</span>
+    </a>
+    <nav class="hidden sm:flex items-center gap-6 text-sm">
+      <a href="/demo/" class="hover:underline">Demo</a>
+      <a href="#features" class="hover:underline">Features</a>
+      <a href="#privacy" class="hover:underline">Privacy</a>
+    </nav>
+  </header>
 
-    <div class="hero">
-      <span class="pill">Early Access</span>
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 pt-8 pb-4">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Preserve Every Memory.<br class="hidden md:block"/> Share Every Story.
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-slate-700">
+          Heirloom is your private, AI-powered life archive — a single place to capture moments, organize memories, and turn a lifetime into a story worth passing on.
+        </p>
+
+        <!-- CTA Card -->
+        <div class="mt-8 bg-white/80 backdrop-blur border border-slate-200 rounded-2xl p-5 shadow-sm">
+          <h2 class="text-base font-semibold tracking-wide text-slate-900">Be the first to try Heirloom</h2>
+          <p class="text-slate-600 text-sm mt-1">Join the waitlist today and help shape the future of memory keeping.</p>
+
+          <div class="mt-4">
+            <!-- BEEHIIV_EMBED: paste the Beehiiv embed snippet here; keep container for spacing -->
+            <!-- Example placeholder button if embed not present -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#waitlist" class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-white font-semibold hover:bg-indigo-700 transition">
+                Join the Waitlist
+              </a>
+            </div>
+          </div>
+
+          <p class="mt-3 text-xs text-slate-500">No spam — early access invites and product updates only.</p>
+        </div>
+
+        <p class="mt-3 text-sm text-slate-600">
+          Want to see how it feels? <a href="/demo/" class="underline decoration-indigo-500 underline-offset-4 hover:opacity-80">Try the interactive preview →</a>
+        </p>
+      </div>
+
+      <!-- Side visual / placeholder -->
+      <div class="hidden md:block">
+        <div class="aspect-[4/3] rounded-2xl border border-slate-200 bg-white shadow-sm flex items-center justify-center p-6">
+          <div class="text-center">
+            <div class="text-sm uppercase tracking-widest text-slate-500">Preview</div>
+            <h3 class="mt-2 text-2xl font-semibold">Your Family’s Memory OS</h3>
+            <p class="mt-2 text-slate-600">Journal, ingest your past, and generate multi-chapter stories tied to your own archive.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <h1>Preserve everything. Remember anything.</h1>
-    <p class="lead">Heirloom is an AI-powered memory OS for families—daily journaling, past ingestion, instant recall, and multi-chapter life stories with citations to your own data.</p>
-
-    <div class="features">
-      <div class="card"><strong>Capture</strong><br/>Text, voice, photos—everyday moments and major milestones.</div>
-      <div class="card"><strong>Ingest</strong><br/>Pull in old photos and docs; auto-organize by people and events.</div>
-      <div class="card"><strong>Recall</strong><br/>Ask natural questions; get answers with sources from your own vault.</div>
+  <!-- Features -->
+  <section id="features" class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="font-semibold text-lg">Capture Life as It Happens</h3>
+        <p class="mt-2 text-slate-600">
+          Write daily notes, record voice messages, upload photos, or import entire albums. Heirloom keeps it all safe, structured, and searchable — so no detail is ever lost.
+        </p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="font-semibold text-lg">Rediscover the Past</h3>
+        <p class="mt-2 text-slate-600">
+          Search your history like you search the web. Ask:<br/>
+          <em>“When did I first visit Paris?”</em><br/>
+          <em>“What stories has my grandfather told about his childhood?”</em><br/>
+          <em>“Show me every memory tagged with ‘graduation.’”</em><br/>
+          Heirloom’s AI recall brings back the details you’d forgotten — dates, faces, places, feelings — all tied to your timeline.
+        </p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="font-semibold text-lg">From Data to Story</h3>
+        <p class="mt-2 text-slate-600">
+          With enough memories, Heirloom can weave them into rich, multi-chapter narratives. Imagine receiving a beautifully written life story, told in your own words and images, ready to share with your family.
+        </p>
+      </div>
     </div>
+  </section>
 
-    <div class="cta">
-      <h3>Join the early access list</h3>
-      <!-- Replace this placeholder form with your Beehiiv embed in a later step -->
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script><iframe src="https://subscribe-forms.beehiiv.com/7e97f2c9-aee6-4586-9d07-0ca2538b53ad" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 660px; height: 391px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
+  <!-- Privacy + Generations -->
+  <section id="privacy" class="max-w-6xl mx-auto px-4 pb-14">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="font-semibold text-lg">Family-First, Privacy-First</h3>
+        <p class="mt-2 text-slate-600">
+          Your memories are yours. End-to-end encryption and local-first options mean no ads, no selling of your data, and no outside access. Share only what you choose, with the people who matter.
+        </p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="font-semibold text-lg">Built for Generations</h3>
+        <p class="mt-2 text-slate-600">
+          From baby photos to milestone anniversaries, Heirloom becomes a living archive. Future generations won’t just see photos — they’ll hear voices, read stories, and experience the legacy you leave behind.
+        </p>
+      </div>
     </div>
+  </section>
 
-    <p class="muted" style="margin-top:16px;">
-  Want to see how it will feel? <a href="/demo/">Try the interactive preview →</a>
-</p>
+  <footer class="max-w-6xl mx-auto px-4 pb-10">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-600">
+      <p>© <span id="y"></span> Heirloom — All rights reserved.</p>
+      <div class="flex items-center gap-5">
+        <a href="/demo/" class="hover:underline">Demo</a>
+        <a href="/thanks" class="hover:underline">Thanks</a>
+      </div>
+    </div>
+  </footer>
 
-    <footer class="muted">
-      © <span id="y"></span> Heirloom — tryheirloomai.com
-    </footer>
-  </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
