@@ -3,51 +3,93 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heirloom Demo</title>
+  <title>Heirloom Demo — Interactive Preview</title>
   <meta name="description" content="Heirloom interactive preview — ask a question and see a sample response." />
   <style>
     :root { --radius: 16px; }
     * { box-sizing: border-box; }
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; background:#fff; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 48px 20px; }
     a { color: inherit; }
     .crumbs { font-size: 14px; color:#666; margin-bottom: 18px; }
     h1 { font-size: 36px; margin: 0 0 8px; }
     p.lead { color:#444; margin:0 0 20px; }
     .card { border:1px solid #eee; border-radius: var(--radius); padding: 20px; }
     .row { display:flex; gap:10px; align-items:center; }
-    textarea { width:100%; min-height: 90px; padding:12px 14px; font-size:16px; border:1px solid #ddd; border-radius: 10px; }
+    textarea { width:100%; min-height: 100px; padding:12px 14px; font-size:16px; border:1px solid #ddd; border-radius: 10px; }
     button { padding: 12px 16px; font-size: 16px; border:0; border-radius:10px; background:#111; color:#fff; cursor:pointer; }
     button[disabled] { opacity:.5; cursor:not-allowed; }
-    .out { border:1px solid #eee; border-radius: var(--radius); padding:16px; min-height: 140px; background:#fafafa; white-space: pre-wrap; line-height:1.4; }
+    .controls { display:flex; gap:10px; flex-wrap:wrap; }
+    .out { border:1px solid #eee; border-radius: var(--radius); padding:16px; min-height: 180px; background:#fafafa; line-height:1.55; }
     .muted { color:#666; font-size:14px; }
     .spinner { display:inline-block; width:16px; height:16px; border:2px solid #999; border-top-color: transparent; border-radius:50%; animation: spin 1s linear infinite; vertical-align: middle; margin-left:8px; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .examples { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-    .chip { border:1px solid #ddd; border-radius:999px; padding:6px 10px; font-size:14px; cursor:pointer; }
+    .chip { border:1px solid #ddd; border-radius:999px; padding:6px 10px; font-size:14px; cursor:pointer; background:#fff; }
+    .chip:hover { background:#f5f5f5; }
+    .toolbar { display:flex; gap:10px; align-items:center; justify-content:space-between; margin-top: 8px; }
+    .right { display:flex; gap:10px; align-items:center; }
+    .select { padding: 10px 12px; border-radius:10px; border:1px solid #ddd; background:#fff; font-size:14px; }
+    .badge { display:inline-block; background:#111; color:#fff; font-size:12px; padding:6px 10px; border-radius:999px; letter-spacing:.3px; }
     footer { margin-top:28px; }
+    @media (max-width: 520px) {
+      h1 { font-size: 30px; }
+      .toolbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .right { width: 100%; justify-content: flex-start; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="crumbs"><a href="/">← Back</a></div>
     <h1>Heirloom — Interactive Preview</h1>
-    <p class="lead">Ask a sample question. This demo simulates how Heirloom will recall moments and generate narrative from your family’s data.</p>
+    <p class="lead">Ask a sample question. This demo simulates how Heirloom will turn everyday photos, journals, and voice notes into a living family narrative.</p>
 
     <div class="card" style="margin:16px 0;">
-      <div class="row">
-        <textarea id="q" placeholder="e.g., Summarize our 2020 summer road trip with highlights."></textarea>
+      <div class="toolbar">
+        <span class="badge">Demo — Sample Output</span>
+        <div class="right">
+          <select id="preset" class="select" title="Choose a prompt">
+            <option value="">Choose a prompt…</option>
+            <option>Show me our life milestones</option>
+            <option>Tell a heartfelt story about moving into a first apartment</option>
+            <option>Summarize a recent vacation with highlights</option>
+            <option>Create a wedding-day narrative</option>
+            <option>What traditions show up every holiday season?</option>
+            <option>Describe the first year with a newborn</option>
+            <option>Build a timeline of major career changes</option>
+            <option>Reflect on overcoming a difficult year</option>
+            <option>Write a letter to my future self</option>
+            <option>Summarize a family reunion weekend</option>
+          </select>
+          <button id="fill">Use Prompt</button>
+        </div>
       </div>
-      <div class="examples">
-     <span class="chip" data-q="Show me my life milestones">Life milestones</span>
-     <span class="chip" data-q="Tell me about birthdays over the years">Birthday memories</span>
-     <span class="chip" data-q="Summarize my last vacation">Vacation story</span>
-     <span class="chip" data-q="Create a family narrative">Family narrative</span>
-   </div>
 
-      <div class="row" style="margin-top:10px; justify-content:space-between;">
-        <span class="muted">Demo only — sample output.</span>
-        <button id="go">Generate Preview</button>
+      <div class="row" style="margin-top:10px;">
+        <textarea id="q" placeholder="Type your own prompt, or choose one above…"></textarea>
+      </div>
+
+      <div class="examples">
+        <span class="chip" data-q="Show me our life milestones">Life milestones</span>
+        <span class="chip" data-q="Tell a heartfelt story about moving into a first apartment">First apartment</span>
+        <span class="chip" data-q="Summarize a recent vacation with highlights">Vacation summary</span>
+        <span class="chip" data-q="Create a wedding-day narrative">Wedding day</span>
+        <span class="chip" data-q="What traditions show up every holiday season?">Holiday traditions</span>
+        <span class="chip" data-q="Describe the first year with a newborn">First year with a newborn</span>
+        <span class="chip" data-q="Build a timeline of major career changes">Career timeline</span>
+        <span class="chip" data-q="Reflect on overcoming a difficult year">Difficult year</span>
+        <span class="chip" data-q="Write a letter to my future self">Letter to future self</span>
+        <span class="chip" data-q="Summarize a family reunion weekend">Family reunion</span>
+      </div>
+
+      <div class="toolbar">
+        <span class="muted">Tip: ask for a “timeline,” a “story,” or a “summary.”</span>
+        <div class="controls">
+          <button id="go">Generate Preview</button>
+          <button id="reset" style="background:#fff;color:#111;border:1px solid #ddd;">Reset</button>
+          <button id="copy" style="background:#fff;color:#111;border:1px solid #ddd;">Copy Output</button>
+        </div>
       </div>
     </div>
 
@@ -57,57 +99,123 @@
   </div>
 
   <script>
-    const y = document.getElementById('y'); y.textContent = new Date().getFullYear();
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Elements
     const q = document.getElementById('q');
     const out = document.getElementById('out');
     const go = document.getElementById('go');
+    const resetBtn = document.getElementById('reset');
+    const copyBtn = document.getElementById('copy');
+    const preset = document.getElementById('preset');
+    const fill = document.getElementById('fill');
 
+    // Generic, heartfelt samples (NO personal names)
     const samples = {
-  "milestones": `**Life Milestones (Sample Output)**
-• 2015 — Moved into a new apartment, first big city job.  
-• 2018 — Graduation photos; video of family cheering.  
-• 2021 — New home purchase; housewarming party.  
-• 2023 — Big trip abroad; 200+ photos clustered.  
+      milestones: `**Life Milestones — Sample Timeline**
+• **2015** — A key in a palm and a lease on a first apartment. Photo roll shows a mattress on the floor, pizza boxes on the window ledge, and a lamp too bright for the little room.  
+• **2018** — A graduation cap held like a trophy; a 7-second video of laughter in a hallway that smells like coffee and old books.  
+• **2021** — A new home; paint swatches taped like flags along a wall. The first night: air mattress, takeout noodles, and a storm that rattled the blinds.  
+• **2023** — Passports stamped; a folder of sunset photos where the light turns everyone gold.  
 
-**Summary:** Heirloom ties these milestones into a timeline so they’re never forgotten.`,
-  
-  "birthday": `**Birthday Memories (Sample Output)**
-1) 2010 — Surprise party at a local park.  
-2) 2016 — Homemade cake with friends singing.  
-3) 2022 — Restaurant dinner with a slideshow of photos.  
+**Summary:** Heirloom stitches photos, voice notes, and calendar events into a timeline with captions and context, so the years don’t blur—each milestone gets its own anchor you can return to.`,
 
-**Why it matters:** Heirloom collects recurring events across the years and shows how traditions evolve.`,
-  
-  "vacation": `**Vacation Story (Sample Output)**
-Day 1 — Arrival snapshots at the airport.  
-Day 3 — Beach photos auto-tagged with “sunset.”  
-Day 5 — Journal entry about trying new foods.  
+      apartment: `**First Apartment — A Heartfelt Snapshot**
+The story starts with a door that sticks. There’s a humming fridge, echoing floors, and a first evening where dinner is eaten cross-legged among unopened boxes. A short video captures a laugh over a crooked shelf; the audio peaks when a friend shouts, “We’ll fix it later.”  
+In the gallery are grainy photos of sunlight pooling on bare floorboards, a receipt for a second-hand couch, and a late-night voice memo: *“It smells like paint and possibility.”*  
 
-**Summary:** The trip becomes a chapter with highlights and a curated gallery.`,
-  
-  "general": `**Family Narrative (Sample Output)**
-Heirloom scans your journals, photos, and notes to generate a chapter of your story. It links images, voice notes, and events into a narrative you can revisit or share.  
+**What Heirloom preserves:** not just the move-in day, but the quiet after—mugs that don’t match, the first plant that survives, the calendar event called “finally feels like home.” Citations link back to the photos, notes, and that midnight memo (Journal, Oct 2).`,
 
-_Tip:_ Try asking for a “timeline,” a “story,” or a “summary” for different flavors of output.`
-};
+      vacation: `**Vacation Highlights — Five Days That Didn’t Rush Past**
+• **Day 1:** Arrival snapshots—blurry but happy. The first picture from the hotel balcony includes the corner of a paper map, folded wrong.  
+• **Day 3:** A beach at dusk; eight photos tagged “sunset,” including the one where footprints braid together near the waterline.  
+• **Day 4:** A market morning; a voice memo about a pastry you can’t pronounce, and a single photo of a vendor smiling with their whole face.  
+• **Day 5:** The airport goodbye to a place you barely learned and already miss.  
 
-    const pickSample = (txt) => {
-      txt = (txt || "").toLowerCase();
-      if (txt.includes("road") || txt.includes("trip")) return samples.road;
-      if (txt.includes("koko")) return samples.koko;
-      if (txt.includes("buck")) return samples.buck;
-      if (txt.includes("milestone") || txt.includes("timeline")) return samples.milestones;
-      // Default narrative
-      return `**Heirloom Preview**
-I’ll scan your journals, photos, voice notes, and events to assemble a clean summary with citations back to the original memories. This interactive preview demonstrates the tone and structure of responses you can expect.
+**Summary:** Heirloom lifts out the textures—salt in the air, sugar on a napkin, light on a cheek—and arranges them into a chapter you can reopen without scrolling through hundreds of files.`,
 
-_Tip:_ Ask for a “timeline,” a “story,” or a “summary,” and reference names (e.g., Koko, Buck) for richer results.`;
+      wedding: `**Wedding Day — A Narrative in Three Acts**
+**Act I — Morning:** Buttons that won’t behave, a mirror wiped with a palm, a playlist named “soft nerves.” Photos catch hands fixing hair, a wrinkled note with vows practiced in a whisper.  
+**Act II — Vows:** The mic pops once, then steadies. There’s a breath right before “I do” that the camera almost misses; Heirloom bookmarks it because the room goes quiet in the same second.  
+**Act III — Night:** Shoes abandoned under a table, a laugh that keeps interrupting a speech, a video where someone who never dances does.  
+
+**Why it matters:** Heirloom pulls the small, human beats—creases in paper, smudges on glass, the last song when no one wants to leave—and links them back to the images and recordings that prove they happened.`,
+
+      holidays: `**Holiday Traditions — A Thread Across Years**
+Every year, the same three photos appear: a kitchen crowded with elbows, a doorway hung with something handmade, a table that looks too small for the voices it holds. A note from an older winter reads, *“We burn the first batch of cookies on purpose now—grandma started it.”*  
+Playlists repeat, recipes evolve, ornaments migrate. The data says routine; the heart says ritual.  
+
+**Heirloom’s view:** across twelve seasons, it maps who stood where in the photo, which song always sneaks onto the speaker, and how one person’s laugh shows up in every clip like a watermark.`,
+
+      newborn: `**First Year With a Newborn — A Gentle Chronicle**
+The first month is soft-focus: tiny socks on a radiator, a bottle warming beside a window, a calendar dotted with 2 a.m. notes that read like weather reports. Around three months, the camera learns a favorite angle—cheek against shoulder, breath like a moth wing.  
+By six months, there’s a chorus of firsts—the laugh that sounds like a hiccup, the sound of a spoon tapping a bowl, the squeak of a mobile turning. At twelve months, someone claps at a single candle and the room becomes bright with faces trying not to cry.  
+
+**Heirloom’s promise:** it doesn’t just mark the date; it remembers the room, the song, the quiet relief when sleep finally comes.`,
+
+      career: `**Career Timeline — The Work of Becoming**
+• **Entry Level:** Photo of a badge and a coffee ring on a desk calendar. A note: *“Learned more from the night shift than the handbook.”*  
+• **Pivot:** A certificate no one asked for but you wanted anyway; an email to yourself titled “try?” saved at 1:04 a.m.  
+• **Leadership:** A screenshot of a congratulatory message where the spelling of your name is wrong, but the joy is right.  
+• **Reset:** A resignation letter that reads like a boundary finally respected. A photo of a quieter morning and a walk taken on purpose.  
+
+**Arc:** Heirloom lays these moments end-to-end so you can see not just what changed, but who did.`,
+
+      difficult: `**A Difficult Year — Naming the Weather**
+This was the year that taught the house how to hold silence. Journals show short entries, more commas than periods. Photos dim for a while; then a friend’s hands appear in a kitchen you did not have to clean alone.  
+There’s a voice memo you never sent that says, *“Today was only okay, and that is a victory.”* Later, there’s a calendar event called “first laugh in weeks,” unshared but starred.  
+
+**Heirloom’s role:** it holds the proof that you kept moving—tea bags lined up like small flags, a pair of shoes by the door again, a playlist that remembers when the light started returning.`,
+
+      letter: `**Letter to a Future Self — Draft from the Archive**
+Dear Future Me,  
+I hope you kept the habit of stepping outside before the kettle boils. I hope you still take photos of small things—sun on a countertop, a book left open like a door. If you’ve forgotten how brave you were, check the folder from last spring.  
+If you’ve forgotten how loved you are, play the voice messages where people mispronounce the name of that bakery on purpose just to make you laugh.  
+Keep choosing the life that makes you notice the weather.  
+
+— Signed, the person who finally learned to save the good mug for ordinary days.`,
+
+      reunion: `**Family Reunion — A Weekend in Motion**
+Friday starts with arrivals—trunk lids, waving arms, the inventory of snacks. Someone shouts across a yard like a lighthouse. The camera keeps choosing the picnic table; by sunset it’s covered in stories and paper plates.  
+Saturday morning is a map of errands; the gallery shows two people arguing gently about the best route and three people pretending to listen. Afternoon: a game no one remembers the rules to, but everyone remembers the laughter. Night: fireworks that look like handwriting in the dark.  
+Sunday is hugs in slow motion. The last photo is always the driveway after everyone leaves, quiet as a held breath.  
+
+**Heirloom’s take:** it tags the voices, the recipes, the running jokes, and the way the same three cousins always end up on dish duty.`,
+
+      general: `**Heirloom Preview**
+This demo stitches together photos, notes, and recordings into a narrative you can carry. When connected to your real archive, Heirloom cites the source of each detail—journal entries, albums, calendar events—so every memory has a place to stand.  
+
+_Try prompts like “timeline,” “summary,” or “story,” and watch how the structure shifts._`
     };
 
+    function chooseSample(input) {
+      const txt = (input || "").toLowerCase();
+      const map = [
+        {k: ["milestone","milestones","life timeline","since"], v: "milestones"},
+        {k: ["apartment","first apartment","move-in","moving"], v: "apartment"},
+        {k: ["vacation","trip","travel"], v: "vacation"},
+        {k: ["wedding","vows","ceremony"], v: "wedding"},
+        {k: ["holiday","holidays","tradition","traditions","season"], v: "holidays"},
+        {k: ["newborn","baby","first year"], v: "newborn"},
+        {k: ["career","job","work","promotion","pivot"], v: "career"},
+        {k: ["difficult","hard year","loss","grief","setback"], v: "difficult"},
+        {k: ["letter","future self"], v: "letter"},
+        {k: ["reunion","gathering","weekend"], v: "reunion"}
+      ];
+      for (const m of map) {
+        if (m.k.some(w => txt.includes(w))) return samples[m.v];
+      }
+      return samples.general;
+    }
+
+    // Minimal markdown -> HTML
     function renderMarkdown(md) {
-      // Minimal markdown: bold **text** and line breaks
       return md
+        .replace(/^### (.+)$/gm, '<strong>$1</strong>')
+        .replace(/^\*\*([^\n]+)\*\*$/gm, '<strong>$1</strong>')
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/(_|\\_)_/g, '_')
         .replace(/\n/g, '<br/>');
     }
 
@@ -121,16 +229,16 @@ _Tip:_ Ask for a “timeline,” a “story,” or a “summary,” and referenc
       go.textContent = 'Generating';
       go.insertAdjacentHTML('beforeend', '<span class="spinner"></span>');
 
-      // fake thinking
-      await sleep(700);
-      let answer = pickSample(text);
+      await sleep(500);
+      const answer = chooseSample(text);
 
-      // fake token stream
+      // “Streaming” render
       out.innerHTML = '';
       const tokens = answer.split(' ');
       for (let i = 0; i < tokens.length; i++) {
         out.innerHTML += tokens[i] + ' ';
-        await sleep(12 + Math.random() * 18);
+        // tiny jitter to feel organic
+        await sleep(10 + Math.random() * 16);
       }
       out.innerHTML = renderMarkdown(out.textContent);
 
@@ -138,9 +246,31 @@ _Tip:_ Ask for a “timeline,” a “story,” or a “summary,” and referenc
       go.textContent = original;
     }
 
+    // UI hooks
     go.addEventListener('click', simulate);
+    resetBtn.addEventListener('click', () => { q.value=''; out.textContent='Your preview will appear here.'; });
+    copyBtn.addEventListener('click', async () => {
+      const temp = document.createElement('div');
+      temp.innerHTML = out.innerHTML;
+      const txt = temp.textContent || temp.innerText || '';
+      try {
+        await navigator.clipboard.writeText(txt.trim());
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy Output', 1200);
+      } catch {
+        copyBtn.textContent = 'Copy failed';
+        setTimeout(() => copyBtn.textContent = 'Copy Output', 1200);
+      }
+    });
+
     document.querySelectorAll('.chip').forEach(chip => {
       chip.addEventListener('click', () => { q.value = chip.dataset.q; });
+    });
+
+    fill.addEventListener('click', () => {
+      const p = preset.value;
+      if (!p) return;
+      q.value = p;
     });
   </script>
 </body>
