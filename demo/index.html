@@ -62,30 +62,33 @@
     const go = document.getElementById('go');
 
     const samples = {
-      "road": `**Summer 2020 — Road Trip Highlights**
-- Day 1: Portland lighthouse at sunrise; your photo roll shows 47 shots between 5:45–6:30 AM.
-- Day 3: Koko met the ocean (again); voice memo tagged “she finally chased waves.”
-- Day 5: Campfire story night; 12-minute video with grandma recounting 1968 cross-country trip.
+  "milestones": `**Life Milestones (Sample Output)**
+• 2015 — Moved into a new apartment, first big city job.  
+• 2018 — Graduation photos; video of family cheering.  
+• 2021 — New home purchase; housewarming party.  
+• 2023 — Big trip abroad; 200+ photos clustered.  
 
-**Summary:** A five-day loop with coastal stops, dog-friendly trails, and nightly journals. The most-liked image (family selfie in Acadia) anchors the narrative.`,
-      "koko": `**Koko’s Best Moments (This Year)**
-1) “First snow sprint” — slow-mo clip flagged in January; 1,842 views in shared album.
-2) Vet visit gold star — clean bill of health; notes mention “still thinks she’s a puppy.”
-3) Porch naps with Buck — 17 photos auto-clustered Sundays at 3–5 PM.
+**Summary:** Heirloom ties these milestones into a timeline so they’re never forgotten.`,
+  
+  "birthday": `**Birthday Memories (Sample Output)**
+1) 2010 — Surprise party at a local park.  
+2) 2016 — Homemade cake with friends singing.  
+3) 2022 — Restaurant dinner with a slideshow of photos.  
 
-**Memory prompt:** “Write a haiku about Koko’s porch naps.”`,
-      "buck": `**The Day Buck Came Home**
-It starts with a nervous tail and a too-big collar. The first photo shows him in the passenger seat, ears like satellite dishes. That afternoon, someone recorded a 22-second clip where he refuses to leave your lap. The evening ends with a chewed shoelace and a new routine: two bowls, one heart.
+**Why it matters:** Heirloom collects recurring events across the years and shows how traditions evolve.`,
+  
+  "vacation": `**Vacation Story (Sample Output)**
+Day 1 — Arrival snapshots at the airport.  
+Day 3 — Beach photos auto-tagged with “sunset.”  
+Day 5 — Journal entry about trying new foods.  
 
-**Why it matters:** Firsts shape the storyboard; Heirloom links these to future milestones.`,
-      "milestones": `**Family Milestones Since 2015**
-• 2016 — New house keys; photo album “fresh paint & pizza.”
-• 2018 — Koko’s agility ribbon; short video stitched from burst shots.
-• 2021 — Buck’s first hike; GPS route + tagged photos.
-• 2023 — “Kitchen chaos” renovation; 4K time-lapse week.
+**Summary:** The trip becomes a chapter with highlights and a curated gallery.`,
+  
+  "general": `**Family Narrative (Sample Output)**
+Heirloom scans your journals, photos, and notes to generate a chapter of your story. It links images, voice notes, and events into a narrative you can revisit or share.  
 
-**Next:** Heirloom can generate a printed timeline poster from these anchors.`
-    };
+_Tip:_ Try asking for a “timeline,” a “story,” or a “summary” for different flavors of output.`
+};
 
     const pickSample = (txt) => {
       txt = (txt || "").toLowerCase();
