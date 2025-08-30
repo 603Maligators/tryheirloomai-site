@@ -183,19 +183,14 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function computeProgress() {
-      const nowItem = MILESTONES.find(m => m.now);
-      if (!nowItem) return 0;
-      const match = nowItem.timeframe.match(/(\d+)[\u2013-]?(\d+)?/);
-      if (!match) return 0;
-      const startMonth = parseInt(match[1], 10);
-      const endMonth = match[2] ? parseInt(match[2], 10) : startMonth;
-      const midpoint = (startMonth + endMonth) / 2;
-      return Math.round((midpoint / 12) * 100);
+      const weights = { planned: 0, in_progress: 0.5, completed: 1 };
+      const total = MILESTONES.reduce((sum, m) => sum + (weights[m.status] || 0), 0);
+      return Math.round((total / MILESTONES.length) * 100);
     }
 
     const progressPercent = computeProgress();
     document.getElementById('progress').style.width = progressPercent + '%';
-    document.getElementById('progress-text').textContent = 'Year progress: ' + progressPercent + '%';
+    document.getElementById('progress-text').textContent = progressPercent + '% complete';
 
     const timeline = document.getElementById('timeline');
     const monthNodes = [];
@@ -273,3 +268,4 @@
   </script>
 </body>
 </html>
+
