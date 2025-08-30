@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heirloom Roadmap</title>
+  <meta name="description" content="See what's ahead for Heirloom over the next year." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://www.tryheirloomai.com/roadmap/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Heirloom Roadmap" />
+  <meta property="og:description" content="See what's ahead for Heirloom over the next year." />
+  <meta property="og:url" content="https://www.tryheirloomai.com/roadmap/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.tryheirloomai.com/logo.svg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heirloom Roadmap" />
+  <meta name="twitter:description" content="See what's ahead for Heirloom over the next year." />
+  <meta name="twitter:image" content="https://www.tryheirloomai.com/logo.svg" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="tryheirloomai.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-[#fafaf7] text-slate-900 font-sans">
+  <header class="max-w-[60rem] mx-auto py-6 px-4">
+    <a href="/" class="text-sm hover:underline">&larr; Back to Home</a>
+  </header>
+
+  <main class="max-w-[60rem] mx-auto px-4">
+    <h1 class="text-3xl font-serif font-bold bg-gradient-to-r from-[#3B7A57] to-[#f97316] bg-clip-text text-transparent">Roadmap</h1>
+    <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div class="text-sm text-slate-600">Last updated: <span>2025-08-30</span></div>
+      <div class="flex gap-2">
+        <button id="jump-now" class="text-sm px-3 py-1 rounded text-white bg-gradient-to-r from-[#3B7A57] to-[#f97316] hover:opacity-90">Jump to Now</button>
+        <button id="copy-link" class="text-sm px-3 py-1 rounded text-white bg-gradient-to-r from-[#3B7A57] to-[#f97316] hover:opacity-90">Copy Roadmap Link</button>
+      </div>
+    </div>
+    <p class="mt-2 text-sm text-slate-600">Roadmap is directional and may change.</p>
+
+    <div class="mt-6">
+      <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div id="progress" class="h-full bg-gradient-to-r from-[#3B7A57] to-[#f97316]" style="width:0%"></div>
+      </div>
+      <div id="progress-text" class="mt-1 text-right text-sm text-slate-700"></div>
+    </div>
+
+    <div class="mt-6">
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="px-2 py-1 rounded-full bg-green-100 text-green-700">Completed</span>
+        <span class="px-2 py-1 rounded-full bg-indigo-100 text-indigo-700">In progress</span>
+        <span class="px-2 py-1 rounded-full bg-orange-100 text-orange-700">Now</span>
+        <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-700">Planned</span>
+      </div>
+    </div>
+
+    <div id="timeline" class="relative mt-10 flex flex-col space-y-10 md:space-y-0 md:flex-row md:justify-between overflow-x-auto"></div>
+  </main>
+
+  <footer class="max-w-[60rem] mx-auto px-4 py-10 text-sm text-slate-600 text-center">
+    © <span id="y"></span> Heirloom
+  </footer>
+
+  <script>
+    const MILESTONES = [
+      {
+        id: "funding",
+        title: "Secure funding",
+        timeframe: "Months 1–2",
+        status: "in_progress",
+        now: true,
+        description: "Close pre-seed, finalize entity, basic runway.",
+        link: null
+      },
+      {
+        id: "foundations",
+        title: "Foundations & infra",
+        timeframe: "Months 1–3",
+        status: "in_progress",
+        now: false,
+        description: "Auth, storage, environments, observability, CI/CD.",
+        link: null
+      },
+      {
+        id: "alpha",
+        title: "Alpha: capture & recall",
+        timeframe: "Months 2–4",
+        status: "planned",
+        now: false,
+        description: "Journal, photo upload, search, smart tags.",
+        link: null
+      },
+      {
+        id: "import",
+        title: "Data import tools",
+        timeframe: "Months 3–5",
+        status: "planned",
+        now: false,
+        description: "Bulk import from Photos/Drive; de-dupe; EXIF/time alignment.",
+        link: null
+      },
+      {
+        id: "beta",
+        title: "Private beta cohort",
+        timeframe: "Months 4–6",
+        status: "planned",
+        now: false,
+        description: "50–100 users; feedback loops; basic analytics.",
+        link: null
+      },
+      {
+        id: "narrative",
+        title: "Narrative generation v1",
+        timeframe: "Months 5–7",
+        status: "planned",
+        now: false,
+        description: "Multi-chapter stories w/ citations to user data.",
+        link: null
+      },
+      {
+        id: "sharing",
+        title: "Family sharing & roles",
+        timeframe: "Months 6–8",
+        status: "planned",
+        now: false,
+        description: "Circles, invites, approvals, shared albums/timelines.",
+        link: null
+      },
+      {
+        id: "apps",
+        title: "Mobile apps (preview)",
+        timeframe: "Months 7–9",
+        status: "planned",
+        now: false,
+        description: "iOS/Android capture, offline drafts, background uploads.",
+        link: null
+      },
+      {
+        id: "privacy",
+        title: "Privacy: E2EE vault",
+        timeframe: "Months 8–10",
+        status: "planned",
+        now: false,
+        description: "End-to-end encryption for designated collections.",
+        link: null
+      },
+      {
+        id: "print",
+        title: "Print & export",
+        timeframe: "Months 9–10",
+        status: "planned",
+        now: false,
+        description: "Photo books, PDFs, JSON export.",
+        link: null
+      },
+      {
+        id: "public-beta",
+        title: "Public beta",
+        timeframe: "Months 10–11",
+        status: "planned",
+        now: false,
+        description: "Waitlist open, pricing preview, onboarding flows.",
+        link: null
+      },
+      {
+        id: "launch",
+        title: "v1 Launch",
+        timeframe: "Month 12",
+        status: "planned",
+        now: false,
+        description: "Subscriptions, partnerships, support docs.",
+        link: null
+      }
+    ];
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function computeTimeProgress() {
+      const nowItem = MILESTONES.find(m => m.now);
+      if (!nowItem) return 0;
+      const nums = nowItem.timeframe.match(/\d+/g).map(Number);
+      const month = nums.length === 1 ? nums[0] : (nums[0] + nums[1]) / 2;
+      return Math.round((month / 12) * 100);
+    }
+
+    const progressPercent = computeTimeProgress();
+    document.getElementById('progress').style.width = progressPercent + '%';
+    document.getElementById('progress-text').textContent = 'Time progress: ' + progressPercent + '%';
+
+    const timeline = document.getElementById('timeline');
+    const monthNodes = [];
+
+    for (let i = 1; i <= 12; i++) {
+      const month = document.createElement('div');
+      month.className = 'relative pl-8 md:pl-0 md:flex-1';
+      const marker = document.createElement('div');
+      marker.className = 'absolute left-0 top-1 w-3 h-3 rounded-full bg-white border-2 border-[#f97316]';
+      month.appendChild(marker);
+      const label = document.createElement('div');
+      label.className = 'ml-4 text-xs text-slate-600 md:ml-0 md:mt-6 md:text-center';
+      label.innerHTML = `<span class="md:hidden">M${i}</span><span class="hidden md:inline">Month ${i}</span>`;
+      month.appendChild(label);
+      timeline.appendChild(month);
+      monthNodes.push(month);
+    }
+
+    const vLine = document.createElement('div');
+    vLine.className = 'absolute left-1 top-0 bottom-0 w-1 bg-gradient-to-b from-[#f97316] to-[#fb923c] md:hidden';
+    timeline.appendChild(vLine);
+    const hLine = document.createElement('div');
+    hLine.className = 'hidden md:block absolute top-1 left-0 right-0 h-1 bg-gradient-to-r from-[#f97316] to-[#fb923c]';
+    timeline.appendChild(hLine);
+
+    let nowMarker = null;
+
+    MILESTONES.forEach(m => {
+      const start = parseInt(m.timeframe.match(/\d+/)[0], 10);
+      const parent = monthNodes[start - 1];
+      const card = document.createElement('div');
+      card.className = 'relative bg-white rounded-xl shadow-sm p-4 mt-4 ml-8 md:ml-0 md:mt-10 md:w-64 border border-slate-200';
+      const badges = [];
+      if (m.now) badges.push('<span class="px-2 py-0.5 rounded-full text-xs bg-orange-100 text-orange-700">Now</span>');
+      const statusMap = { planned: 'Planned', in_progress: 'In progress', completed: 'Completed' };
+      const statusClass = { planned: 'bg-slate-100 text-slate-700', in_progress: 'bg-indigo-100 text-indigo-700', completed: 'bg-green-100 text-green-700' }[m.status];
+      badges.push(`<span class="px-2 py-0.5 rounded-full text-xs ${statusClass}">${statusMap[m.status]}</span>`);
+      card.innerHTML = `
+        <div class="flex gap-2 mb-2">${badges.join('')}</div>
+        <h3 class="font-serif font-semibold text-[#3B7A57]">${m.title}</h3>
+        <p class="text-sm text-slate-600">${m.timeframe}</p>
+        <p class="mt-2 text-sm text-slate-700">${m.description}</p>
+        ${m.link ? `<a href="${m.link}" class="mt-2 inline-block text-sm text-[#f97316] underline">Learn more</a>` : ''}
+        <span class="absolute -left-4 top-4 w-2 h-2 rounded-full bg-[#f97316] md:left-1/2 md:-translate-x-1/2 md:-top-4 md:top-auto"></span>
+      `;
+      parent.appendChild(card);
+
+      if (m.now) {
+        const dot = document.createElement('span');
+        dot.id = 'now-marker';
+        dot.className = 'absolute left-0 top-1 w-3 h-3 rounded-full bg-[#f97316] md:left-1/2 md:-translate-x-1/2';
+        if (!prefersReducedMotion) dot.classList.add('animate-ping');
+        parent.appendChild(dot);
+        const lbl = document.createElement('div');
+        lbl.className = 'absolute left-4 -top-1 text-xs text-orange-600 md:left-1/2 md:top-4 md:-translate-x-1/2';
+        lbl.textContent = 'Now';
+        parent.appendChild(lbl);
+        nowMarker = dot;
+      }
+    });
+
+    document.getElementById('jump-now').addEventListener('click', () => {
+      if (nowMarker) nowMarker.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center', inline: 'center' });
+    });
+
+    document.getElementById('copy-link').addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href);
+    });
+
+    if (nowMarker) {
+      nowMarker.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center', inline: 'center' });
+    }
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
