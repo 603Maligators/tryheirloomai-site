@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heirloom — Investor Information</title>
+  <meta name="description" content="Private landing page for prospective investors." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://www.tryheirloomai.com/investorinfo/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Heirloom — Investor Information" />
+  <meta property="og:description" content="Private landing page for prospective investors." />
+  <meta property="og:url" content="https://www.tryheirloomai.com/investorinfo/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.tryheirloomai.com/logo.svg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Heirloom — Investor Information" />
+  <meta name="twitter:description" content="Private landing page for prospective investors." />
+  <meta name="twitter:image" content="https://www.tryheirloomai.com/logo.svg" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="tryheirloomai.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-[#fafaf7] text-slate-900 font-sans">
+  <header class="max-w-[60rem] mx-auto flex items-center py-6 px-4">
+    <a href="/" class="flex items-center">
+      <img src="/logo.svg" alt="Heirloom logo" class="h-8" />
+    </a>
+  </header>
+
+  <main class="px-4">
+    <!-- Hero -->
+    <section class="max-w-[60rem] mx-auto text-center py-20">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-[#3B7A57]">Heirloom Investor Information</h1>
+      <p class="mt-4 text-lg text-slate-700">Private landing page for prospective partners and backers.</p>
+    </section>
+
+    <!-- Card Grid -->
+    <section class="max-w-[60rem] mx-auto py-8">
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+          <div class="text-4xl">📄</div>
+          <h3 class="mt-4 font-serif font-semibold">Executive Summary</h3>
+          <p class="mt-2 text-slate-700 text-sm">High-level overview of our mission and traction.</p>
+          <a href="#"
+             class="mt-4 inline-block bg-[#fddfca] text-slate-900 px-4 py-2 rounded-md opacity-50 cursor-not-allowed">
+            View
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+          <div class="text-4xl">📊</div>
+          <h3 class="mt-4 font-serif font-semibold">Pitch Deck</h3>
+          <p class="mt-2 text-slate-700 text-sm">Detailed presentation of our product and vision.</p>
+          <a href="#"
+             class="mt-4 inline-block bg-[#fddfca] text-slate-900 px-4 py-2 rounded-md opacity-50 cursor-not-allowed">
+            View
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+          <div class="text-4xl">💰</div>
+          <h3 class="mt-4 font-serif font-semibold">Financial Model</h3>
+          <p class="mt-2 text-slate-700 text-sm">Projections and key financial assumptions.</p>
+          <a href="#"
+             class="mt-4 inline-block bg-[#fddfca] text-slate-900 px-4 py-2 rounded-md opacity-50 cursor-not-allowed">
+            View
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+          <div class="text-4xl">❓</div>
+          <h3 class="mt-4 font-serif font-semibold">FAQ</h3>
+          <p class="mt-2 text-slate-700 text-sm">Answers to common investor questions.</p>
+          <a href="#"
+             class="mt-4 inline-block bg-[#fddfca] text-slate-900 px-4 py-2 rounded-md opacity-50 cursor-not-allowed">
+            View
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="max-w-[60rem] mx-auto py-16">
+      <h2 class="text-3xl font-serif font-bold text-center">Values</h2>
+      <div class="mt-8 grid gap-8 md:grid-cols-2">
+        <div class="bg-white rounded-xl p-6 shadow-sm text-center md:text-left">
+          <h3 class="font-serif font-semibold text-lg">Privacy-First</h3>
+          <p class="mt-2 text-slate-700 text-sm">Your memories stay yours with encryption and sharing controls.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm text-center md:text-left">
+          <h3 class="font-serif font-semibold text-lg">Built for Generations</h3>
+          <p class="mt-2 text-slate-700 text-sm">Designed to preserve stories for the long term.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-[60rem] mx-auto px-4 py-10 text-sm text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p>© <span id="y"></span> Heirloom</p>
+    <p>Confidential — not for redistribution</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
