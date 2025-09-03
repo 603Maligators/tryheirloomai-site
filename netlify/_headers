@@ -1,0 +1,11 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Content-Security-Policy: default-src 'self' https://subscribe-forms.beehiiv.com; upgrade-insecure-requests
+*/
+/assets/*
+  Cache-Control: public, max-age=31536000
+/css/*
+  Cache-Control: public, max-age=31536000
+/js/*
+  Cache-Control: public, max-age=31536000
