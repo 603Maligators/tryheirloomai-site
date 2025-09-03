@@ -15,4 +15,11 @@
   if(navToggle){
     navToggle.addEventListener('click',()=>nav.classList.toggle('open'));
   }
+  const cta = document.querySelector('[data-scroll]');
+  if(cta){
+    cta.addEventListener('click',e=>{
+      e.preventDefault();
+      document.querySelector(cta.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+  }
 })();
