@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo — Heirloom</title>
+  <meta name="description" content="Chat-style demo."/>
+  <link rel="canonical" href="https://www.tryheirloomai.com/investorinfo/demo.html">
+  <meta property="og:title" content="Demo — Heirloom">
+  <meta property="og:description" content="Chat-style demo.">
+  <meta property="og:image" content="/assets/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script defer src="/js/main.js"></script>
+  <script defer>
+  document.addEventListener('DOMContentLoaded',()=>{
+    const messages = document.querySelector('.chat-messages');
+    const examples = [
+      'Ask me about your 2012 summer photos at the lake.',
+      'Generate a memory chapter about “First Day of School” with references.',
+      'Find every video with Grandma between 2005 and 2015.'
+    ];
+    examples.forEach(t=>{
+      const div=document.createElement('div');
+      div.className='message system';
+      div.textContent=t;
+      messages.appendChild(div);
+    });
+  });
+  </script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><img src="/assets/logo.svg" alt="Heirloom logo"></a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <nav>
+      <a href="/roadmap.html">Roadmap</a>
+      <a href="/investorinfo/team.html">About</a>
+      <a href="/investorinfo/">Investor Info</a>
+      <button class="ghost" data-theme-toggle aria-label="Toggle dark mode">🌓</button>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="chat">
+    <div class="chat-messages"></div>
+    <div class="chat-input">
+      <input type="text" aria-label="Message" placeholder="Type a prompt..." disabled>
+      <button disabled>Send</button>
+    </div>
+  </div>
+</main>
+<footer>
+  <p>© Heirloom</p>
+  <nav>
+    <a href="/roadmap.html">Roadmap</a> •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="mailto:hello@tryheirloomai.com">Contact</a> •
+    <a href="/investorinfo/">Investor Info</a>
+  </nav>
+</footer>
+</body>
+</html>
