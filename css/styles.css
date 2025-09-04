@@ -46,7 +46,6 @@ nav{display:flex;gap:1rem;align-items:center;}
 .hero h1{font-size:clamp(2rem,5vw,3rem);margin-top:1rem;}
 .hero p{color:var(--muted);max-width:60ch;margin:.5rem auto 2rem;}
 .links a{color:var(--muted);font-size:.875rem;}
-.beehiiv-card{max-width:700px;margin:0 auto;padding:1rem;background:var(--bg-elev);border-radius:18px;}
 footer{margin-top:auto;padding:2rem 1rem;font-size:.875rem;text-align:center;color:var(--muted);}
 footer a{color:var(--muted);}
 .timeline{position:relative;margin:2rem auto;padding-left:2rem;max-width:var(--max-width);}
@@ -64,3 +63,7 @@ footer a{color:var(--muted);}
 .chat-input{display:flex;gap:.5rem;padding:1rem;background:var(--bg);border-top:1px solid var(--border);}
 .chat-input input{flex:1;border:1px solid var(--border);border-radius:12px;padding:.5rem;}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation-duration:.01ms!important;}}
+
+.bhv-wrap{max-width:720px;margin:0 auto;padding:0;}
+.beehiiv-embed{width:100%!important;max-width:100%!important;height:415px;border:0;display:block;}
+@media (max-width:480px){.beehiiv-embed{height:460px;}}
