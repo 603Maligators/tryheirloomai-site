@@ -11,36 +11,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.tryheirloomai.com/investorinfo/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.tryheirloomai.com/investorinfo/one-pager.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.tryheirloomai.com/investorinfo/full-pitch.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.tryheirloomai.com/investorinfo/deck.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.tryheirloomai.com/investorinfo/demo.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://www.tryheirloomai.com/investorinfo/team.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://www.tryheirloomai.com/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
