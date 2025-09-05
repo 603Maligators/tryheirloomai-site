@@ -55,6 +55,11 @@ footer a{color:var(--muted);}
 .status{display:inline-block;padding:.125rem .5rem;border-radius:8px;font-size:.75rem;background:var(--border);color:var(--ink);margin-bottom:.5rem;}
 @media(max-width:600px){.timeline{padding-left:1rem;}.milestone{padding-left:1rem;}.milestone::before{left:-.75rem;}}
 .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+.tiles{max-width:var(--max-width);margin:2rem auto;padding:0 1rem;}
+.tile{display:block;padding:1.5rem;border:1px solid var(--border);border-radius:12px;background:var(--bg-elev);text-align:center;transition:background .2s,border-color .2s;}
+.tile h2{margin-bottom:.5rem;}
+.tile p{color:var(--muted);font-size:.875rem;}
+.tile:hover{background:var(--bg);border-color:var(--brand);}
 .chat{max-width:800px;margin:2rem auto;display:flex;flex-direction:column;height:80vh;background:var(--bg-elev);border-radius:18px;overflow:hidden;}
 .chat-messages{flex:1;padding:1rem;overflow-y:auto;background:var(--bg-elev);background-image:url('/assets/logo.svg');background-repeat:no-repeat;background-position:center;background-size:200px;background-attachment:fixed;}
 .message{margin-bottom:1rem;max-width:75%;padding:.5rem 1rem;border-radius:12px;}
