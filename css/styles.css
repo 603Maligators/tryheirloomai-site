@@ -70,6 +70,4 @@ footer a{color:var(--muted);}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation-duration:.01ms!important;}}
 
 #waitlist{display:flex;justify-content:center;}
-.bhv-wrap{max-width:720px;margin:0 auto;padding:0;}
-.beehiiv-embed{width:100%!important;max-width:100%!important;height:415px;border:0;display:block;}
-@media (max-width:480px){.beehiiv-embed{height:460px;}}
+
