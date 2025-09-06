@@ -71,3 +71,6 @@ footer a{color:var(--muted);}
 
 #waitlist{display:flex;justify-content:center;}
 
+.beehiiv-embed{width:900px;height:520px;max-width:100%;}
+@media(max-width:640px){.beehiiv-embed{height:560px;}}
+
