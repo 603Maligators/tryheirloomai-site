@@ -4,3 +4,4 @@
 - add `/about.html` with company background and vision
 - restyle Beehiiv embed on landing page; center and remove card UI
 - add `meta name="robots" content="noindex, nofollow"` to `investorinfo` pages
+- make Beehiiv embed react to dark mode
