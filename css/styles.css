@@ -106,3 +106,20 @@ html[data-theme='dark'] .beehiiv-embed{filter:invert(1) hue-rotate(180deg);}
 .justify-end{justify-self:end;}
 .span-all{grid-column:1/-1;}
 .cta-links{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}
+
+/* About page */
+.about-hero{max-width:72ch;margin:0 auto;text-align:center;padding:2rem 1rem;}
+.about-hero img{width:80px;margin:0 auto 1rem;}
+.about-section{max-width:72ch;margin:0 auto;padding:2rem 1rem;border-top:1px solid var(--border);line-height:1.6;}
+.about-section h2{margin-bottom:.75rem;}
+.about-section ul{list-style:disc;margin-left:1.25rem;margin-top:.5rem;}
+.about-section ul li+li{margin-top:.25rem;}
+.about-cta{max-width:72ch;margin:0 auto;text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);}
+.about-cta .join-waitlist{display:inline-block;margin-top:.5rem;background:var(--brand);color:#fff;padding:.5rem 1rem;border-radius:12px;text-decoration:none;}
+.about-cta .join-waitlist:hover{text-decoration:underline;}
+
+@media(min-width:768px){
+  .about-hero{padding:4rem 1rem 3rem;}
+  .about-section{padding:3rem 1rem;}
+  .about-cta{padding:3rem 1rem;}
+}
