@@ -157,4 +157,5 @@ html[data-theme='dark'] .beehiiv-embed{filter:invert(1) hue-rotate(180deg);}
   .pitch-content{max-width:100%;}
   .pitch-section{page-break-inside:avoid;}
   .pitch-section h2{page-break-after:avoid;}
+  .pitch-section:not(:first-of-type){page-break-before:always;}
 }
