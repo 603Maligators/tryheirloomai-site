@@ -123,3 +123,38 @@ html[data-theme='dark'] .beehiiv-embed{filter:invert(1) hue-rotate(180deg);}
   .about-section{padding:3rem 1rem;}
   .about-cta{padding:3rem 1rem;}
 }
+/* Pitch Page */
+.pitch-main{max-width:var(--max-width);margin:0 auto;}
+.pitch-hero{position:relative;text-align:center;padding:4rem 1rem;background:linear-gradient(135deg,var(--bg-elev),var(--bg));}
+.pitch-hero img{height:clamp(64px,10vw,120px);margin:0 auto;}
+.pitch-hero h1{font-size:clamp(2.75rem,6vw,3rem);margin-top:1rem;}
+.pitch-subtitle{font-size:1.25rem;margin-top:.5rem;color:var(--muted);}
+.pitch-actions{position:absolute;top:1rem;right:1rem;display:flex;gap:.5rem;}
+.pitch-actions .btn{background:var(--brand);color:#fff;padding:.5rem 1rem;border-radius:12px;text-decoration:none;display:inline-block;}
+.pitch-shell{display:flex;gap:2rem;padding:2rem 1rem;}
+.pitch-toc{flex:0 0 220px;position:sticky;top:2rem;align-self:flex-start;}
+.pitch-toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem;}
+.pitch-toc-list a{text-decoration:none;color:var(--muted);}
+.pitch-toc-list a[aria-current="true"]{color:var(--ink);font-weight:600;}
+.pitch-toc-select{display:none;width:100%;margin-bottom:1rem;}
+.pitch-content{flex:1;max-width:840px;}
+.pitch-section{padding:56px 0 40px;border-bottom:1px solid var(--border);}
+.pitch-section:last-child{border-bottom:none;}
+.pitch-section h2{font-size:2rem;margin-bottom:1rem;}
+.pitch-section p{margin-bottom:1.25rem;line-height:1.7;font-size:1.125rem;}
+.skip-link{position:absolute;left:1rem;top:.5rem;background:var(--brand);color:#fff;padding:.5rem 1rem;border-radius:12px;transform:translateY(-200%);transition:transform .2s;z-index:100;}
+.skip-link:focus{transform:translateY(0);}
+@media(max-width:960px){
+  .pitch-shell{flex-direction:column;}
+  .pitch-toc{position:static;}
+  .pitch-toc-list{display:none;}
+  .pitch-toc-select{display:block;}
+  .pitch-actions{position:static;margin-top:1rem;justify-content:center;flex-wrap:wrap;}
+}
+@media print{
+  header,footer,.pitch-toc,.pitch-actions{display:none!important;}
+  .pitch-shell{display:block;padding:0;}
+  .pitch-content{max-width:100%;}
+  .pitch-section{page-break-inside:avoid;}
+  .pitch-section h2{page-break-after:avoid;}
+}
