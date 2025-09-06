@@ -30,30 +30,47 @@
     </nav>
   </div>
 </header>
-<main class="container">
-  <h1>Contact Us</h1>
-  <p>Reach us using the details below. </p>
-
-  
-  <section class="contact-card" aria-labelledby="contact-details">
-    <h2 id="contact-details" class="sr-only">Contact details</h2>
-    <address>
-      <strong>Derek Evans</strong><br>
-      Founder<br>
-      <strong>Heirloom Inc.</strong><br>
-      521 Shaker Rd.<br>
-      Canterbury, NH 03224<br>
-      <a href="mailto:hello@example.com">TryHeirloomAi@gmail.com</a><br>
-      <a href="tel:+10000000000">(207) 378-8660</a><br>
-    </address>
-    <ul class="contact-quicklinks">
-      <li><a href="https://maps.google.com/?q=123%20Placeholder%20Ave%20Example%20City%20ST%2000000" rel="noopener">Open in Maps</a></li>
-      <li><a href="/assets/contact.vcf" download>Download vCard (.vcf)</a></li>
-      <li><a href="#" rel="me">Twitter/X</a></li>
-      <li><a href="#" rel="me">Instagram</a></li>
-      <li><a href="#" rel="me">YouTube</a></li>
-    </ul>
-  </section>
+<main>
+  <div class="page-wrap">
+    <h1>Contact</h1>
+    <p>Reach us using the details below.</p>
+    <div class="grid-contact">
+      <section class="card info-panel">
+        <address id="contact-address"
+                 data-company="Heirloom Inc."
+                 data-street1="521 Shaker Rd."
+                 data-city="Canterbury"
+                 data-region="NH"
+                 data-postal="03224"
+                 data-country="USA"
+                 data-email="TryHeirloomAi@gmail.com"
+                 data-phone="+12073788660">
+          <strong>Heirloom Inc.</strong><br>
+          521 Shaker Rd.<br>
+          Canterbury, NH 03224<br>
+          <a data-email href="mailto:TryHeirloomAi@gmail.com">TryHeirloomAi@gmail.com</a><br>
+          <a data-phone href="tel:+12073788660">(207) 378-8660</a>
+        </address>
+        <ul class="social-list">
+          <li><a href="#" rel="me">Twitter/X</a></li>
+          <li><a href="#" rel="me">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@603Outsiders" rel="me">YouTube</a></li>
+        </ul>
+        <ul class="utilities" aria-label="Contact utilities">
+          <li><a id="map-link" href="#" rel="noopener">Open in Maps</a></li>
+          <li><a id="vcard-link" href="/assets/contact.vcf" download>Download vCard (.vcf)</a></li>
+        </ul>
+      </section>
+      <section class="about-contact">
+        <h2>About these details</h2>
+        <p>We’re a small team and respond as quickly as we can.</p>
+        <ul class="notes">
+          <li>Replies typically within two business days.</li>
+          <li>Support hours Monday–Friday, 9am–5pm ET.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
 </main>
 <footer>
   <p>© Heirloom</p>

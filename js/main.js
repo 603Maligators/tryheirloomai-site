@@ -22,4 +22,20 @@
       document.querySelector(cta.getAttribute('href')).scrollIntoView({behavior:'smooth'});
     });
   }
+  const address = document.getElementById('contact-address');
+  if(address){
+    const {street1='',street2='',city='',region='',postal='',country='',email='',phone=''} = address.dataset;
+    const mapLink = document.getElementById('map-link');
+    if(mapLink){
+      const query = encodeURIComponent([street1,street2,city,region,postal,country].filter(Boolean).join(' '));
+      mapLink.href = `https://maps.google.com/?q=${query}`;
+    }
+    const emailLink = address.querySelector('[data-email]');
+    if(emailLink && email) emailLink.href = `mailto:${email}`;
+    const phoneLink = address.querySelector('[data-phone]');
+    if(phoneLink && phone){
+      const digits = phone.replace(/[^+\d]/g,'');
+      phoneLink.href = `tel:${digits}`;
+    }
+  }
 })();
