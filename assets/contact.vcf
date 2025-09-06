@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Your Company Name
+ORG:Your Company Name, LLC
+EMAIL:hello@example.com
+TEL;TYPE=work,voice:+10000000000
+ADR;TYPE=work:;;123 Placeholder Ave;Example City;ST;00000;USA
+END:VCARD
