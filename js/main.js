@@ -38,4 +38,20 @@
       phoneLink.href = `tel:${digits}`;
     }
   }
+  document.querySelectorAll('#faq-section dt').forEach(dt=>{
+    const id = dt.id;
+    if(!id) return;
+    const btn = document.createElement('button');
+    btn.className='ghost';
+    btn.textContent='🔗';
+    btn.setAttribute('aria-label','Copy link');
+    btn.addEventListener('click',()=>{
+      const url = `${location.origin}${location.pathname}#${id}`;
+      navigator.clipboard?.writeText(url);
+    });
+    dt.appendChild(btn);
+  });
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.documentElement.style.setProperty('scroll-behavior','auto');
+  }
 })();
