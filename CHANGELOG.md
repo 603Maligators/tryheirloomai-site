@@ -1,5 +1,6 @@
 # Changelog
 
+- add 36-Month Financial Model section to company pitch
 - add Unit Economics & Pricing detail to company pitch
 - remove `About` and `Investor Info` links from all headers and footers
 - add `/about.html` with company background and vision
